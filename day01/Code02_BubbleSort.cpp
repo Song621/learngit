@@ -19,6 +19,39 @@ void BubbleSort(vector<int>& unsorted){
 }
 
 int main(){
+    int a[10]= {1,1,2,2,2,3,3,4,4,4};
+    // a[0] = 1;
+    // a[1] = 1;
+    // a[2] = 2;
+    // a[3] = 2;
+    // a[4] = 2;
+
+    // a[5] = 3;
+    // a[6] = 3;
+    // a[7] = 4;
+    // a[8] = 4;
+    // a[9] = 4;
+
+    int eor = 0;
+    for(int i=0; i<10; i++){
+        eor ^= a[i];
+    }
+
+    int rightOne = eor & (~eor + 1);
+    int onlyone = 0;
+    for(int i=0; i<10; i++){
+        if((rightOne & a[i]) == 0) onlyone ^= a[i]; //注意括号(rightOne & a[i]) ==优先级好似高于&，也可以(rightOne & a[i]) == rightOne
+    }
+
+    // int answer1 = eor ^ onlyone;
+    int answer1 = eor ^ onlyone;
+
+    cout<<"answer1: "<< onlyone<<endl;
+    cout<<"answer2: "<< answer1<<endl;
+    return 0;
+}
+
+int main1(){
     cout<<"hello"<<endl;
     vector<int> unsorted_seq;
     unsorted_seq.push_back(12);
