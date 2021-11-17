@@ -15,13 +15,14 @@ struct Node{
 Node* deleteValueNode(Node* head, int val){
     Node* start = new Node(-1, head);
     Node* ptr = start;
-    
-    while(ptr->next != nullptr){
+
+    while(ptr != nullptr && ptr->next != nullptr){
         if(ptr->next->value == val){
             Node* ptr2 = ptr->next;
             ptr->next  =ptr2->next;
             ptr = ptr->next;
             delete ptr2;
+            continue;
         }
         ptr = ptr->next;
     }
