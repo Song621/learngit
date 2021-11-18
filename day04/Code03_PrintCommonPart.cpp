@@ -44,6 +44,5 @@ int main(){
     node2->next->next->next->next = new Node(8);
 
     printCommenPart(node1, node2);
-
     return 0;
 }
