@@ -64,7 +64,48 @@ bool IsPalindromeList2(Node* head){
     return true;
 }
 
+Node* reverseLinkedList(Node* head){
+    Node* pre = NULL;
+    Node* ptr = head;
+
+    while(ptr != NULL){
+        ptr = ptr->next;
+        head->next = pre;
+        pre = head;
+        head = ptr;        
+    }
+
+    return pre;
+}
+
 bool IspalindromeList3(Node* head){
+    // 额外空间为1
+    Node* fast = head;
+    Node* slow = head;
+    
+    while(fast != NULL){
+        if(fast->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        else{
+            fast = fast->next;
+        }
+    }
+
+    Node * ptr = head;
+    Node* ptr_mid = slow;
+    Node* ptr_end_head = reverseLinkedList(slow);
+
+    while(ptr != NULL && ptr_end_head != NULL){
+        if(ptr->value != ptr_end_head->value){
+            return false;
+        }
+        ptr = ptr->next;
+        ptr_end_head = ptr_end_head->next;
+    }
+
+    return true;
 
 }
 
