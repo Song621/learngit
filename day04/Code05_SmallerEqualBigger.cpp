@@ -51,6 +51,89 @@ Node* SmallEqualBigger(Node* head, int val){
     return l[0];
 }
 
+Node* SmallEqualBigger2(Node* head, int val){
+    Node* SH = NULL;
+    Node* ST = NULL;
+    Node* EH = NULL;
+    Node* ET = NULL;
+    Node* BH = NULL;
+    Node* BT = NULL;
+    Node* ptr = head;
+
+    while(ptr!=NULL){
+        if(ptr->value < val){
+            if(SH == NULL){
+                SH = ptr;
+                ST = ptr;
+            }
+            else{
+                ST->next = ptr;
+                ST = ptr;
+            }
+        }
+        else if(ptr->value == val){
+            if(EH == NULL){
+                EH = ptr;
+                ET = ptr;
+            }
+            else{
+                EH->next = ptr;
+                ET = ptr;
+            }
+        }
+        else{
+            if(BH == NULL){
+                BH = ptr;
+                BT = ptr;
+            }
+            else{
+                BH->next = ptr;
+                BT = ptr;
+            }
+        }
+        ptr = ptr->next;
+    }
+
+    if(SH != NULL && EH != NULL && BH != NULL){
+        ptr = SH;
+        ST->next = EH;
+        ET->next = BH;
+        BT->next = NULL;
+    }
+    else if(SH != NULL && EH != NULL){
+        ptr = SH;
+        ST->next = EH;
+        ET->next = NULL;
+    }
+    else if(SH != NULL && BH != NULL){
+        ptr = SH;
+        ST->next = BH;
+        BT->next = NULL;
+    }
+    else if(EH != NULL && BH != NULL){
+        ptr = EH;
+        ET->next = BH;
+        BT->next = NULL;
+    }
+    else if(SH != NULL){
+        ptr = SH;
+        ST->next = NULL;
+    }
+    else if(EH != NULL){
+        ptr = EH;
+        ET->next = NULL;
+    }
+    else if(BH != NULL){
+        ptr = BH;
+        BT->next = NULL;
+    }
+    else{
+        return NULL;
+    }
+
+    return ptr;
+}
+
 int main(){
     cout << "Small Equal Bigger" << endl;
     int value[7] = {4, 6, 3, 5, 8, 5, 2};
@@ -62,7 +145,8 @@ int main(){
     }
     ptr->next = NULL;
 
-    ptr = SmallEqualBigger(head, 5);
+    // ptr = SmallEqualBigger(head, 5);
+    ptr = SmallEqualBigger2(head, 5);
 
     while(ptr != NULL){
         cout<< ptr->value <<endl;
