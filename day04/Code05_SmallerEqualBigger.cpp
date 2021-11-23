@@ -77,7 +77,7 @@ Node* SmallEqualBigger2(Node* head, int val){
                 ET = ptr;
             }
             else{
-                EH->next = ptr;
+                ET->next = ptr;
                 ET = ptr;
             }
         }
@@ -87,7 +87,7 @@ Node* SmallEqualBigger2(Node* head, int val){
                 BT = ptr;
             }
             else{
-                BH->next = ptr;
+                BT->next = ptr;
                 BT = ptr;
             }
         }
@@ -146,7 +146,10 @@ int main(){
     ptr->next = NULL;
 
     // ptr = SmallEqualBigger(head, 5);
+    
+    // ptr = SmallEqualBigger2(head, 0);
     ptr = SmallEqualBigger2(head, 5);
+    // ptr = SmallEqualBigger2(head, 10);
 
     while(ptr != NULL){
         cout<< ptr->value <<endl;
