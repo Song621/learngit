@@ -20,6 +20,7 @@ struct ReturnType{
     ReturnType(bool isB, int hei): isBalanced(isB), height(hei) {};
 };
 // 平衡二叉树，一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1 。
+// LeetCode 110
 ReturnType process(TreeNode* node){
     if(node == NULL) return ReturnType(true, 0);
 
