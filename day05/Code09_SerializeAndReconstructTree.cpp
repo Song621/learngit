@@ -56,3 +56,5 @@ TreeNode* deserialize(string data) {
 
     return reconPreOrder(&processed_data);
 }
+
+// TODO： 层序遍历方式
